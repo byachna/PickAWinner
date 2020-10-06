@@ -207,18 +207,14 @@ namespace PickAWinner
 		// Thanks StackOverflow!
 		public static void Shuffle<T>(this IList<T> list)
 		{
-			RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
-			int n = list.Count;
-			while (n > 1)
+			var rng = new Random((int)DateTime.Now.Ticks);
+
+			for(int i = list.Count - 1; i > 0; i--)
 			{
-				byte[] box = new byte[1];
-				do provider.GetBytes(box);
-				while (!(box[0] < n * (Byte.MaxValue / n)));
-				int k = (box[0] % n);
-				n--;
-				T value = list[k];
-				list[k] = list[n];
-				list[n] = value;
+				var nxt = rng.Next(i + 1);
+				var tmp = list[nxt];
+				list[nxt] = list[i];
+				list[i] = tmp;
 			}
 		}
 
