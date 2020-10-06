@@ -55,7 +55,7 @@ namespace PickAWinner
 				debug.Write("----".PadRight(30) + "-----".PadRight(10) + "-----".PadRight(40) + "-------".PadRight(20));
 				foreach (var d in ReportData.Donations)
 				{
-					debug.Write($"{d.Name.PadRight(30)}{d.Amount.ToString().PadRight(10)}{d.Email.PadRight(40)}{Convert.ToInt32((d.Amount / chanceCost)).ToString().PadRight(20)}");
+					debug.Write($"{d.Name.PadRight(30)}{d.Amount.ToString().PadRight(10)}{d.Email.PadRight(40)}{Convert.ToInt32(Math.Truncate(d.Amount / chanceCost)).ToString().PadRight(20)}");
 				}
 
 				TypeConsole.WriteLine("Donator list generated!");

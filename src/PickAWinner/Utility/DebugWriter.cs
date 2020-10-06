@@ -16,7 +16,7 @@ namespace PickAWinner
 		{
 			try
 			{
-				output = new FileStream("./Output.txt", FileMode.OpenOrCreate, FileAccess.Write);
+				output = new FileStream($"./Output_{DateTime.Now.ToFileTime()}.txt", FileMode.OpenOrCreate, FileAccess.Write);
 				writer = new StreamWriter(output);
 			}
 			catch (Exception e)
